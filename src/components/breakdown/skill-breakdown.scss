@@ -1,0 +1,105 @@
+.probability-table {
+  th, td {
+    width: 50px;
+    height: 50px;
+  }
+  td {
+    font-family: Courier;
+    font-size: 75%;
+    text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+    padding: 1px;
+  }
+
+  .success-chance {
+    //&.impossible {
+    //  background-color: red;
+    //  color: #fff;
+    //}
+    //
+    //&.very-bad{
+    //  background-color: #f06831;
+    //  color: #fff;
+    //}
+    //
+    //&.bad{
+    //  background-color: #ffd570;
+    //}
+    //
+    //&.tough{
+    //  background-color: #fdf79d;
+    //}
+    //
+    //&.good{
+    //  background-color: #d9eed6;
+    //}
+    //
+    //&.great{
+    //  background-color: lightgreen;
+    //}
+    //
+    //&.outstanding{
+    //  background-color: #6bfa76;
+    //}
+    //
+    //&.amazing{
+    //  background-color: #00ff2b;
+    //}
+    &.impossible {
+      background-color: red;
+      color: #fff;
+    }
+
+    &.dangerous{
+      background-color: #ec6633;
+      color: #fff;
+    }
+
+    &.very-hard{
+      background-color: #e79b51;
+      //color: #fff;
+    }
+
+    &.hard{
+      background-color: #efb87a;
+      //color: #fff;
+    }
+
+    &.very-unfavorable{
+      background-color: #f9dfb5;
+    }
+
+    &.unfavorable{
+      background-color: #fff1ce;
+    }
+
+    &.even {
+      background-color: #e9e9e9;
+    }
+
+    &.good{
+      background-color: #cfe0c8;
+    }
+
+    &.great{
+      background-color: #b2d1a3;
+    }
+
+    &.outstanding{
+      background-color: #98c585;
+    }
+
+    &.amazing{
+      background-color: #61d856;
+    }
+
+    &.stupendous{
+      background-color: #3cea3b;
+    }
+
+    &.guaranteed {
+      background-color: #00ff2b;
+    }
+  }
+}

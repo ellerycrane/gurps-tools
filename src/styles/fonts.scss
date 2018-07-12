@@ -1,0 +1,76 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 2884500, 2014-09-16T14:08:26-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: ProximaNova-Light by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/light/
+ *
+ * Webfont: ProximaNova-Semibold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/semibold/
+ *
+ * Webfont: ProximaNova-Regular by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/regular/
+ *
+ * Webfont: ProximaNova-Bold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/bold/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2884500
+ * Licensed pageviews: 1,000,000
+ * Webfonts copyright: Copyright (c) Mark Simonson, 2005. All rights reserved.
+ *
+ * © 2014 MyFonts Inc
+*/
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('~fonts/proxima-nova/proxima-nova-light.eot');
+  src: url('~fonts/proxima-nova/proxima-nova-light.eot?#iefix') format('embedded-opentype'),
+    url('~fonts/proxima-nova/proxima-nova-light.woff') format('woff'),
+    url('~fonts/proxima-nova/proxima-nova-light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('~fonts/proxima-nova/proxima-nova-regular.eot');
+  src: url('~fonts/proxima-nova/proxima-nova-regular.eot?#iefix') format('embedded-opentype'),
+    url('~fonts/proxima-nova/proxima-nova-regular.woff') format('woff'),
+    url('~fonts/proxima-nova/proxima-nova-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('~fonts/proxima-nova/proxima-nova-semibold.eot');
+  src: url('~fonts/proxima-nova/proxima-nova-semibold.eot?#iefix') format('embedded-opentype'),
+    url('~fonts/proxima-nova/proxima-nova-semibold.woff') format('woff'),
+    url('~fonts/proxima-nova/proxima-nova-semibold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('~fonts/proxima-nova/proxima-nova-bold.eot');
+  src: url('~fonts/proxima-nova/proxima-nova-bold.eot?#iefix') format('embedded-opentype'),
+    url('~fonts/proxima-nova/proxima-nova-bold.woff') format('woff'),
+    url('~fonts/proxima-nova/proxima-nova-bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+}
+
+
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');

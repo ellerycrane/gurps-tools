@@ -1,0 +1,11 @@
+.idea
+*.iml
+node_modules/
+dist/
+nginx.conf
+.DS_Store
+npm_debug.log
+npm-debug.log
+licenses.csv
+tmp/
+*.pdf

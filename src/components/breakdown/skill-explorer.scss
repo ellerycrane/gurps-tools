@@ -1,0 +1,94 @@
+.skill-level-item {
+  display: flex;
+  .level-range {
+    font-weight: 900;
+    font-size: 90%;
+    display: inline-block;
+    min-width: 75px;
+    text-align: right;
+    margin-right: 10px;
+    flex-grow: 0;
+  }
+
+  .level-details {
+    flex-grow: 1;
+
+  }
+}
+
+.level-label {
+  font-weight: 900;
+  font-style: italic;
+}
+
+.level-addendum {
+  font-weight: 500;
+  font-style: italic;
+  font-size: 90%;
+  margin-left: 5px;
+}
+
+.level-title {
+  margin-right: 5px;
+}
+
+.level-description {
+  display: block;
+  padding-left: 15px;
+  margin: 0 0 5px 0;
+  //text-indent: -25px;
+}
+
+.skill-group-breakdown {
+  margin: 10px;
+  .skill-group {
+    width: 100%;
+    .group {
+      padding: 10px;
+      &:nth-child(even) {
+        background: #dfeff7
+      }
+      &:nth-child(odd) {
+        background: #FFF
+      }
+    }
+
+    .group-details {
+      display: flex;
+
+      .group-label {
+        padding-top: 5px;
+      }
+
+      .group-description {
+        flex-grow: 0;
+        max-width: 47%;
+        margin: 0;
+        padding: 0 0 0 20px;
+
+      }
+
+      .skill-level-list {
+        flex-grow: 1;
+        margin: 0 0 0 20px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.skill-group-info {
+  .group-label {
+    text-align: left;
+    margin: 0;
+    padding: 0 0 10px 0;
+    font-size: 20px;
+  }
+
+  .group-details {
+    .group-description {
+      font-size: 90%;
+      margin: 0;
+    }
+  }
+}

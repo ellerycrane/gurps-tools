@@ -1,0 +1,56 @@
+@import '~darsain-tooltip/tooltip.css';
+@import '~darsain-tooltip/transitions.css';
+@import '~darsain-tooltip/types.css';
+@import '~styles/colors';
+@import '~styles/prefixes';
+
+$app-tooltip-border: 1px solid #AAA;
+$box-shadow: rgba(179, 179, 179, 0.76);
+
+.#{$app-prefix}-tooltip {
+  max-width: 1000px;
+  background-color: #1a1a1a;
+  color: #BBB;
+  text-shadow: none;
+  padding: 8px;
+  border: $app-tooltip-border;
+  box-shadow: 0 1px 3px $box-shadow;
+
+  &.top:after, &.top-right:after, &.top-left:after{
+    border-bottom: $app-tooltip-border;
+    border-right: $app-tooltip-border;
+  }
+
+  &.bottom:after, &.bottom-right:after, &.bottom-left:after{
+    border-top: $app-tooltip-border;
+    border-left: $app-tooltip-border;
+  }
+}
+
+.truncated-array-values {
+  .truncated-array-value {
+    display: block;
+  }
+
+  &.inline-values {
+    max-width: 650px;
+
+    .truncated-array-value {
+      display: inline-block;
+      padding-right: 5px;
+
+      &:after {
+        content: attr(data-delimiter);
+      }
+      
+      &:last-child:after {
+        content: '';
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.#{$app-prefix}-hovercard__wrapper .#{$app-prefix}-hovercard__content-ref {
+  display: none;
+}

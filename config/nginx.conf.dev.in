@@ -1,0 +1,44 @@
+daemon off;
+error_log /dev/stdout info;
+worker_processes 1;
+
+http {
+  access_log /dev/stdout;
+  include types.conf;
+
+  server {
+    listen @PORT@;
+    index index.html;
+    root @WORKING_DIR@/dist/;
+
+    location /api/ {
+      proxy_pass @API_URL@;
+    }
+
+    location / {
+      # Add the content security policy header to all requests. It whitelists outgoing requests
+      # by request type and domain.
+      # For more info, see <https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP>
+      # add_header Content-Security-Policy "
+      #  default-src 'self' blob:;
+      #  style-src 'self' fonts.googleapis.com blob: 'unsafe-inline';
+      #  font-src 'self' fonts.gstatic.com;
+      #  img-src 'self' *;
+      #  script-src 'self' *;
+      #  connect-src 'self'
+      #    ws://localhost:@WP_PORT@
+      #    http://localhost:@WP_PORT@";
+
+      # In development, proxy all non-api requests to the webpack-dev server. This enables hot
+      # reloading in development.
+      proxy_pass http://localhost:@WP_PORT@/;
+
+      # In development, wildcard CORS header to allow hot reload
+      add_header 'Access-Control-Allow-Origin' '*';
+    }
+  }
+}
+
+events {
+  worker_connections 4096;
+}

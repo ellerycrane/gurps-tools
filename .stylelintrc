@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "block-no-empty": null,
+    "color-no-invalid-hex": true,
+    "declaration-colon-space-after": "always",
+    "no-extra-semicolons": true,
+    "value-no-vendor-prefix": true,
+    "indentation": 2,
+    "max-empty-lines": 2,
+    "rule-empty-line-before": [ "always-multi-line", {
+      "except": ["first-nested"],
+      "ignore": ["after-comment"]
+    } ],
+    "unit-whitelist": ["px", "%", "deg", "em", "ms", "s", "vh", "vw"]
+  }
+}

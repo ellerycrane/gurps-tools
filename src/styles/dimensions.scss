@@ -1,0 +1,5 @@
+$g: 8px;
+
+@function g($m: 1) {
+  @return $g * $m
+}

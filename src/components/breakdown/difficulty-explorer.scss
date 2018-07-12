@@ -1,0 +1,155 @@
+.difficulty-explorer {
+  padding: 10px;
+  .level-overview {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
+    height: 140px;
+
+    .selected-level {
+      min-width: 90px;
+      font-size: 50px;
+      text-align: center;
+    }
+
+    .level-details {
+      flex-grow: 1;
+      //min-width: 40%;
+      min-width: 200px;
+      font-size: 140%;
+      padding-top: 25px;
+      height: 140px;
+      .level-description {
+        font-size: 75%;
+      }
+    }
+    .skill-group-info {
+      flex-grow: 0;
+      max-width: 60%;
+      min-width: 200px;
+      margin: 0 50px 0 20px;
+      padding: 0;
+      height: 140px;
+
+    }
+  }
+  .difficulty-breakdown{
+    margin-top: 2%;
+  }
+
+  .difficulty-cell {
+    height: 60px;
+    padding: 2px 0 2px;
+  }
+  .prob-mult-column {
+    padding: 0;
+    .prob-mult-table {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .difficulty-row {
+    &:nth-child(even) {
+      background: #dfeff7
+    }
+    &:nth-child(odd) {
+      background: #FFF
+    }
+  }
+
+  .modifier {
+    font-weight: bold;
+    font-size: 140%;
+    text-align: center;
+    width: 60px;
+  }
+
+  .label {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 110%;
+    white-space: nowrap;
+    padding: 0 10px 0 10px;
+    text-align: center;
+  }
+
+  .description{
+    vertical-align: center;
+    font-size: 100%;
+    padding: 0 10px 0 10px;
+    .example {
+      display: block;
+      font-style: italic;
+    }
+  }
+
+  .success-chance {
+    //font-family: Courier;
+    //font-size: 80%;
+    text-align: center;
+    vertical-align: center;
+    font-weight: bold;
+
+    width: 75px;
+    padding: 0;
+
+    &.impossible {
+      background-color: red;
+      color: #fff;
+    }
+
+    &.dangerous{
+      background-color: #ec6633;
+      color: #fff;
+    }
+
+    &.very-hard{
+      background-color: #e79b51;
+      //color: #fff;
+    }
+
+    &.hard{
+      background-color: #efb87a;
+      //color: #fff;
+    }
+
+    &.very-unfavorable{
+      background-color: #f9dfb5;
+    }
+
+    &.unfavorable{
+      background-color: #fff1ce;
+    }
+
+    &.even {
+      background-color: #e9e9e9;
+    }
+
+    &.good{
+      background-color: #cfe0c8;
+    }
+
+    &.great{
+      background-color: #b2d1a3;
+    }
+
+    &.outstanding{
+      background-color: #98c585;
+    }
+
+    &.amazing{
+      background-color: #61d856;
+    }
+
+    &.stupendous{
+      background-color: #3cea3b;
+    }
+
+    &.guaranteed {
+      background-color: #00ff2b;
+    }
+  }
+
+}
