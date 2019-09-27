@@ -50,6 +50,7 @@ const
           to: 'cmaps/'
         },
         { from: './components/pdf/sample.pdf' },
+        { from: './components/pdf/UAMystic3.pdf' },
         ]),
 
       // Pare down moment package to just english

@@ -78,7 +78,7 @@ class OutlineItem {
   buildOutline = async (pdf) => {
     const
       outline = await pdf.getOutline(),
-      items = this.indexItems(outline)
+      items = isNonEmptyValue(outline) ? this.indexItems(outline) : []
 
     return Promise.all(items.map((item, itemIndex) => this.buildOutlineItem(item, pdf)))
   }
@@ -93,7 +93,8 @@ const options = {
 
 class PdfViewer extends React.Component {
   state = {
-    file: './sample.pdf',
+    // file: './sample.pdf',
+    file: './UAMystic3.pdf',
     numPages: 1,
     totalPages: null,
     pageInput: '1',
@@ -134,17 +135,19 @@ class PdfViewer extends React.Component {
       window.getLabelForPageIndex = this.getLabelForPageIndex
     })
 
-    //
-    // pdf.getOutline().then((outline) => {
-    //   console.log({outline})
-    //   outline.map((item, itemIndex) => {
-    //     new OutlineItem().buildOutlineItem(item, pdf).then((r)=>console.log("item: ", r))
-    //
-    //     // console.log("Trying to print an item")
-    //     // this.printOutlineItem(item, pdf)
-    //   })
-    //   this.setState({outline: outline})
-    // })
+
+    pdf.getOutline().then((outline) => {
+      console.log({outline})
+      if (isNonEmptyValue(outline)) {
+        outline.map((item, itemIndex) => {
+          new OutlineItem().buildOutlineItem(item, pdf).then((r) => console.log("item: ", r))
+
+          // console.log("Trying to print an item")
+          // this.printOutlineItem(item, pdf)
+        })
+      }
+      this.setState({outline: outline})
+    })
 
     this.setState({totalPages: pdf.numPages})
   }
@@ -178,7 +181,7 @@ class PdfViewer extends React.Component {
       }
     }
 
-    if(hierachy.length>1 && isNonEmptyValue(item) && item.pageIndex === hierachy.slice(-2)[0].pageIndex){
+    if (hierachy.length > 1 && isNonEmptyValue(item) && item.pageIndex === hierachy.slice(-2)[0].pageIndex) {
       hierachy.pop()
     }
 
@@ -221,40 +224,76 @@ class PdfViewer extends React.Component {
     // this.setState(newState)
   }
 
-  renderTextItem = (args) => {
-    // console.log(args)
+  renderPageLink(str, splitRegex, pageNumRegex, pageNumSplitRegex) {
     const
-      {str, itemIndex} = args,
-      regex = /(p\.\s+\d+)/gm,
-      pageNumRegex = /p\.\s+(\d+)/,
-      split = str.split(regex)
+      split = str.split(splitRegex)
 
     if (split.length > 1) {
-
       let parts = split.map((s, i) => {
-        let m = s.match(pageNumRegex)//pageNumRegex.exec(s)
+        let m = s.match(pageNumRegex)
         if (m === null) {
           return <span key={i} className="regular-text">{s}</span>
         }
-        return <mark key={i} className={`page-ref page-ref-${m[1]}`}
-                     onClick={(e) => this.changePageInput(m[1])}>{s}</mark>
+        let
+          hasRegularText = m.length === 3,
+          pageRef = hasRegularText ? m[2] : m[1],
+          pageLinkText = hasRegularText ? m[2] : s,
+          pageLink = <mark key={i} className={`page-ref page-ref-${pageRef}`}
+                            onClick={(e) => this.changePageInput(pageRef)}>{pageLinkText}</mark>
+
+        if(hasRegularText){
+          return [
+            <span key={`text-i`} className="regular-text">{m[1]}</span>,
+            pageLink
+          ]
+        }
+        return pageLink
+
       })
       return (
-        <div className={'custom-text-render'}>{str}
+        <div className={'custom-text-render'}>
+          <span className="full-text">{str}</span>
           <div className='wrapped'>{parts}</div>
         </div>
       )
     }
+    return null
+  }
+
+  renderTextItem = ({str, itemIndex}) => {
+    console.log(str)
+    const PAGE_LINK_REGEXES = [
+      {
+        splitRegex: /(p\.\s+\d+)/gm,
+        pageNumRegex: /p\.\s+(\d+)/,
+      },
+      {
+        splitRegex: /(\.\.+\s*\d+)/gm,
+        pageNumRegex: /(\.\.+\s*)(\d+)/,
+      },
+      {
+        splitRegex: /^(\d+)$/gm,
+        pageNumRegex: /^(\d+)$/,
+      }
+    ]
+
+    for (let {splitRegex, pageNumRegex, pageNumSplitRegex} of PAGE_LINK_REGEXES) {
+      let result = this.renderPageLink(str, splitRegex, pageNumRegex)
+      if (isNonEmptyValue(result)) {
+        return result
+      }
+    }
+
     return str
   }
 
-  renderBreadcrumb = ()=>{
+  renderBreadcrumb = () => {
     const {outline, pageLabels, pageIndex} = this.state
 
     if (isNonEmptyValue(pageIndex) && isNonEmptyValue(outline)) {
       const
         labelHierarchy = this.getLabelForPageIndex(pageLabels[pageIndex]) || [],
-        labelItems = ensureArray(labelHierarchy).map((item,idx)=>{
+        labelItems = ensureArray(labelHierarchy).map((item, idx) => {
           console.log(item)
           let
             pageIndex = item.pageIndex,

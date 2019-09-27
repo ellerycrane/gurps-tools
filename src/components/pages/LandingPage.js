@@ -8,8 +8,8 @@ import PdfViewer from '../pdf/PdfViewer'
 const LandingPage = (props) => {
   // return <SkillExplorer />
   // return <SkillBreakdown />
-  return <DifficultyExplorer />
-  // return <PdfViewer />
+  // return <DifficultyExplorer />
+  return <PdfViewer />
 }
 
 function mapStateToProps(state, ownProps) {

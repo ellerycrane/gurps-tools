@@ -58,23 +58,36 @@
               height:100%;
               display: block;
               line-height:100%;
+              white-space: pre;
+            }
+            .full-text {
+              line-height: 100%;
+              height: 100%;
+              display: block;
+              white-space: pre;
+              //color: blue;
             }
             .wrapped {
               line-height: 100%;
+              height: 100%;
+              width: 100%;
               top: 0;
               position: absolute;
-              color: transparent;
+              //color: rgba(255, 0, 0, 0.37);
               display: block;
+              white-space: pre;
             }
             .regular-text {
-              display: inline-block;
+              //display: inline-block;
+              white-space: pre;
               //line-height: 100%;
               //top: 0;
               //position: absolute;
               //color: transparent;
             }
             .page-ref{
-              display: inline-block;
+              //display: inline-block;
+              white-space: pre;
               //line-height: 100%;
               //top: 0;
               //position: absolute;
